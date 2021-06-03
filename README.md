@@ -15,13 +15,15 @@
   * A sale has a product type field and a value – you should choose sensible types for these.
   * Any number of different product types can be expected. There is no fixed set.
   * A message notifying you of a sale could be one of the following types. <br>
-	** Message Type 1 ** : contains the details of 1 sale E.g apple at 10p. <br>
-	** Message Type 2 ** : contains the details of a sale and the number of occurrences of that sale. E.g 20 sales of apples at 10p each. <br>
-	** Message Type 3 ** : contains the details of a sale and an adjustment operation to be applied to all stored sales of this product type. Operations can be add, 							subtract, or multiply e.g Add 20p apples would instruct your application to add 20p to each sale of apples you have recorded.<br>
+	 <b>Message Type 1</b> : contains the details of 1 sale E.g apple at 10p. <br>
+	 <b>Message Type 2</b> : contains the details of a sale and the number of occurrences of that sale. E.g 20 sales of apples at 10p each. <br>
+	 <b>Message Type 3</b> : contains the details of a sale and an adjustment operation to be applied to all stored sales of this product type. Operations can be add, 							subtract, or multiply e.g Add 20p apples would instruct your application to add 20p to each sale of apples you have recorded.<br>
 
 ### Setup
 
-  * Import project as maven project and run SalesNotificationMain class.
+  * git clone https://github.com/chirraiahk/sales-notification.git
+  * Import project as maven project in eclipse/intelliJ IDE and run SalesNotificationMain class.
+ 
 
 ### Environment
   * Java 1.8
