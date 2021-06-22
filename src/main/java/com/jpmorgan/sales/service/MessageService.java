@@ -18,17 +18,17 @@ import com.jpmorgan.sales.model.Product;
 public class MessageService {
 
 	private final List<Message> messageList = new ArrayList<>();
-	private final ProductService productServie = new ProductService();
+	private final ProductService productService = new ProductService();
 
 	public void addMessage(Message message) {
 		if (message != null) {
 			messageList.add(message);
 			if (!message.isPriceAdjustmentRequired()) {
 				if (message.getProduct() != null
-						&& productServie.getProductsMap().containsKey(message.getProduct().getProductType())) {
-					productServie.updateProductDetailsForExistingProductType(message);
+						&& productService.getProductsMap().containsKey(message.getProduct().getProductType())) {
+					productService.updateProductDetailsForExistingProductType(message);
 				} else {
-					productServie.createProductForNewProductType(message);
+					productService.createProductForNewProductType(message);
 				}
 			}
 		}
@@ -39,7 +39,7 @@ public class MessageService {
 			String[] messageArray = message.trim().split("\\s+");
 			String word = messageArray[0];
 			if (word.matches("Add|Subtract|Multiply")) {
-				return parseAdjustMentMessage(message);
+				return parseAdjustmentMessage(message);
 			} else if (word.matches("^\\d+")) {
 				return parseQuantityMessage(message);
 			} else if (messageArray.length == 3 && messageArray[1].contains("at")) {
@@ -80,7 +80,7 @@ public class MessageService {
 		return null;
 	}
 
-	private Message parseAdjustMentMessage(String msg) {
+	private Message parseAdjustmentMessage(String msg) {
 		String[] messageArray = msg.trim().split("\\s+");
 		if (messageArray.length != 3) {
 			return null;
@@ -143,15 +143,15 @@ public class MessageService {
 		return messageList;
 	}
 
-	public List<Message> getAdjustMentMessages() {
+	public List<Message> getAdjustmentMessages() {
 		return messageList.stream().filter(Message::isPriceAdjustmentRequired).collect(Collectors.toList());
 	}
 
 	public void adjustPrice(Message message) {
-		productServie.adjustProductPrice(message);
+		productService.adjustProductPrice(message);
 	}
 
 	public Collection<Product> getProducts() {
-		return productServie.getProducts();
+		return productService.getProducts();
 	}
 }

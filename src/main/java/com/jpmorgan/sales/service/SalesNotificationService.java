@@ -10,7 +10,7 @@ public class SalesNotificationService {
 	/**
 	 * 1. Parse the input message and store it in Message object. 
 	 * 2. Add the message object to messageList if the object is not null.
-	 * 3. If the message contains adjustMent operation (i.add/substract/multiply) then adjust the price.
+	 * 3. If the message contains adjustment operation (i.add/subtract/multiply) then adjust the price.
 	 * 4. Display total sales and price for 10 sales and adjustment report for 50 sales.
 	 */
 	public void processSalesNotificationMessage(String inputMessage) {
@@ -25,7 +25,7 @@ public class SalesNotificationService {
 			printTenSalesReport(messageService.getProducts());
 		}
 		if (messageService.getMessageList().size() % 50 == 0) {
-			printAdjustment(messageService.getAdjustMentMessages());
+			printAdjustment(messageService.getAdjustmentMessages());
 		}
 	}
 }

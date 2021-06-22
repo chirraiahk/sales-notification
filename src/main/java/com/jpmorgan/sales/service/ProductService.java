@@ -54,7 +54,7 @@ public class ProductService {
 		if (AdjustmentOperation.ADD == operation) {
 			newPrice = applyAddOperation(product, adjustmentPrice);
 		} else if (AdjustmentOperation.SUB == operation) {
-			newPrice = applySubstractOperation(product, adjustmentPrice);
+			newPrice = applySubtractOperation(product, adjustmentPrice);
 		} else if (AdjustmentOperation.MULTIPLY == operation) {
 			newPrice = applyMultiplyOperation(product, adjustmentPrice);
 		}
@@ -72,7 +72,7 @@ public class ProductService {
 		return newPrice;
 	}
 
-	private double applySubstractOperation(Product product, BigDecimal adjustmentPrice) {
+	private double applySubtractOperation(Product product, BigDecimal adjustmentPrice) {
 		return product.getNewPrice().doubleValue() - product.getQuantity() * adjustmentPrice.doubleValue();
 	}
 
